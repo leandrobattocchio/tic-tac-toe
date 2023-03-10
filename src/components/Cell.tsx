@@ -15,7 +15,7 @@ const Cell: React.FC<Props> = ({ cell }) => {
 
     const changeCell = (): void => {
         if (gameStatus !== GAME_STATUS.IN_PROGRESS) {
-            handleChangeCell(cell.id)
+            handleChangeCell({ id: cell.id })
         }
     }
 
@@ -27,7 +27,7 @@ const Cell: React.FC<Props> = ({ cell }) => {
     }, [winnerRow])
 
     const isEmpty = cell.pick === ''
-    if (isEmpty) return <div className='cell' onClick={() => { handleChangeCell(cell.id) }}></div>
+    if (isEmpty) return <div className='cell' onClick={() => { handleChangeCell({ id: cell.id }) }}></div>
 
     const CircleOrX = cell.pick === PLAYERS.PLAYER_ONE ? <Equis winner={winner} /> : <Circle winner={winner} />
 

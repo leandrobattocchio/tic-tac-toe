@@ -15,7 +15,7 @@ export interface TypeContext {
     actualPlayer: string
     board: Board
     gameStatus: GameStatusValues
-    handleChangeCell: (id: string) => void
+    handleChangeCell: ({ id }: CellId) => void
     scoreboard: Scoreboard
     winnerRow: string[]
     idiom: Traduction
@@ -42,6 +42,7 @@ export interface Traduction {
     traduction: Language
 }
 
+export type CellId = Pick<Cell, 'id'>
 export type LanguagesValues = typeof LANGUAGES[keyof typeof LANGUAGES]
 export type GameStatusValues = typeof GAME_STATUS[keyof typeof GAME_STATUS]
 export type ActualPlayer = typeof PLAYERS[keyof typeof PLAYERS]

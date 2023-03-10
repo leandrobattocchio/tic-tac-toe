@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from 'react'
 import { GAME_STATUS, LANGUAGES, PLAYERS } from '../consts/consts'
 import { checkWinner, createGame } from '../helpers/helpers'
-import { type Scoreboard, type ActualPlayer, type Board, type GameStatusValues, type TypeContext, type Traduction } from '../type.d'
+import { type Scoreboard, type ActualPlayer, type Board, type GameStatusValues, type TypeContext, type Traduction, type CellId } from '../type.d'
 import winningAudio from '../assets/game-over.mp3'
 import pickingAudioEquis from '../assets/note-low.mp3'
 import pickingAudioCircle from '../assets/note-high.mp3'
@@ -45,7 +45,7 @@ export const TableContextProvider: React.FC<Props> = ({ children }) => {
         setWinnerRow([])
     }
 
-    const handleChangeCell = (id: string): void => {
+    const handleChangeCell = ({ id }: CellId): void => {
         if (gameStatus !== GAME_STATUS.IN_PROGRESS && gameStatus !== GAME_STATUS.INTIAL) {
             restartGame()
             return
