@@ -1,0 +1,309 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: black;
+    width: 100%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 93.9vh;
+    width: 80vw;
+    margin: 0 auto;
+}
+
+.scoreboard {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 73px;
+}
+
+.scoreboard div h3 {
+    font-size: 50px;
+}
+
+.no-selected h2,
+.no-selected h3 {
+    color: rgb(255, 255, 255, 0.2);
+}
+
+.scoreboard div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(255, 251, 251);
+    width: 180px;
+    height: 180px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-turn {
+    font-size: 55px;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 19px solid white;
+    background-color: black;
+    animation: circle-popping 500ms;
+}
+
+.equis {
+    position: relative;
+    width: 130px;
+    height: 15px;
+    animation: equis-popping 500ms;
+}
+
+.equis::before {
+    content: "";
+    position: absolute;
+    width: 140px;
+    height: 19px;
+    background-color: white;
+    transform: rotate(45deg);
+
+}
+
+.equis::after {
+    content: "";
+    position: absolute;
+    width: 140px;
+    height: 19px;
+    background-color: white;
+    transform: rotate(-45deg);
+}
+
+.winner-circle {
+    animation: rainbow-circle 3s infinite;
+}
+
+.winner-equis::before {
+    animation: rainbow-equis 3s infinite;
+}
+
+.winner-equis::after {
+    animation: rainbow-equis 3s infinite;
+}
+
+.game-board {
+    display: none;
+    position: absolute;
+    font-size: 40px;
+    top: 5.5%;
+}
+
+.game-finish {
+    display: block;
+    animation: winner-popping 2s infinite;
+}
+
+.game-settings {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    gap: 500px;
+    margin-top: 20px;
+}
+
+.game-settings div {
+    cursor: pointer;
+}
+
+.game-settings div:hover {
+    opacity: 0.5;
+}
+
+@keyframes circle-popping {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes equis-popping {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes rainbow {
+    0% {
+        color: blue;
+    }
+
+    25% {
+        color: rgb(34, 213, 58);
+    }
+
+    50% {
+        color: rgb(179, 218, 26);
+    }
+
+    75% {
+        color: rgb(90, 24, 214);
+    }
+
+    100% {
+        color: rgb(203, 29, 29);
+    }
+}
+
+@keyframes winner-popping {
+    0% {
+        transform: scale(1);
+        rotate: 5deg;
+    }
+
+    50% {
+        transform: scale(1.2);
+        rotate: -5deg;
+    }
+
+    100% {
+        transform: scale(1);
+        rotate: 0deg;
+    }
+}
+
+@keyframes rainbow-circle {
+    0% {
+        border-color: blue;
+    }
+
+    50% {
+        border-color: rgb(34, 213, 58);
+    }
+
+    50% {
+        border-color: rgb(179, 218, 26);
+    }
+
+    50% {
+        border-color: rgb(90, 24, 214);
+    }
+
+    100% {
+        border-color: rgb(203, 29, 29);
+    }
+}
+
+@keyframes rainbow-equis {
+    0% {
+        background-color: blue;
+    }
+
+    50% {
+        background-color: rgb(34, 213, 58);
+    }
+
+    50% {
+        background-color: rgb(179, 218, 26);
+    }
+
+    50% {
+        background-color: rgb(214, 24, 24);
+    }
+
+    100% {
+        background-color: rgb(79, 26, 122);
+    }
+}
+
+@media (max-width: 707px) {
+    main {
+        max-width: 55vw;
+    }
+
+    .board {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        max-height: 70vh;
+    }
+
+    .cell {
+        max-width: 118px;
+        max-height: 138px;
+    }
+
+    .circle {
+        max-width: 98px;
+        max-height: 118px;
+    }
+
+    .equis::after {
+        max-width: 118px;
+        max-height: 138px;
+    }
+
+    .equis::before {
+        max-width: 118px;
+        max-height: 138px;
+    }
+
+    .game-finish {
+        font-size: 25px;
+
+    }
+
+    .scoreboard div h2,
+    .scoreboard div h3 {
+        font-size: 15px;
+        text-align: center;
+    }
+
+    .game-board {
+        top: 12%;
+    }
+
+    .game-settings {
+        gap: 265px;
+    }
+}
